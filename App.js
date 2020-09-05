@@ -1,16 +1,18 @@
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import HomeScreen from "./src/screens/HomeScreen";
-import ComponentsScreen from "./src/screens/components/ComponentsScreen";
+import React from "react";
 
-const navigator = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Components: ComponentsScreen,
-  },
-  {
-    initialRouteName: "Home",
-  }
-);
+import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from "@react-navigation/native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-export default createAppContainer(navigator);
+import MainNavigator from "./src/navigators/MainNavigator";
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <SafeAreaProvider>
+        <StatusBar style="dark" />
+        <MainNavigator />
+      </SafeAreaProvider>
+    </NavigationContainer>
+  );
+}
